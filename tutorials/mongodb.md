@@ -20,6 +20,8 @@ show collections
 
 These last commands are meant to be exploratory. You might prefere to use pymongo instead to access all the python features.
 
+
+
 #TWEETS
 Found in phoenix-tweets-2 on cyberduck (see same email than above)
 2 folders for 1 month
