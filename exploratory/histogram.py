@@ -18,7 +18,7 @@ x = data.keys()
 y = data.values()
 X = np.arange(len(data))
 
-ymax = max(y) + 1
+ymax = max(y)*1.2
 
 plt.figure()
 plt.bar(X, y, align="center",width=0.5)
