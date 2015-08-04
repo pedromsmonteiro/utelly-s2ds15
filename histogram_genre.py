@@ -1,4 +1,4 @@
-###PURPOSE: print the number of events which have a N number of events
+###PURPOSE: print the number of events which have a N number of genre
 
 import pymongo
 
@@ -10,7 +10,7 @@ event = db.event
 
 maxn=10 #max number of genres we are looking for
 for n in range(0,maxn):
-    print event.find({ "topic.genres": { "$size": n } } ).count()
+    print n, event.find({ "topic.genres": { "$size": n } } ).count()
 
 
 
