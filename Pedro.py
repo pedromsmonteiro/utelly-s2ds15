@@ -7,31 +7,42 @@ client = pymongo.MongoClient('localhost', 27017)
 db = client.phoenix
 genre = db.genre
 
-#print max(event.distinct("metadata.duration"))
+# Print max(event.distinct("metadata.duration"))
 
-#print db.event.find_one()
+# Print db.event.find_one()
 
 myFile = open('genre_count.txt', 'w+')
 
-
+# Defining the dictionaries and lists
 counter = 0
 dictionary = {}
-qq = []
+genre_name = []
+count_value = []
 for a in genre.find():
+# The for loop was returning a KeyError. To avoid this: I ignore the error by using the 
+# Try and except conditions.
   try:
-    aa = a['name']
+# Getting the name of the genre
+    genre_name_temp = a['name']
   except KeyError:
-    print 'No Name'
-  bb = db.event.find({u'topic.genres.name': aa}).count()
-  if bb != 0:
-    counter += bb
-    dictionary['aa'] = bb
-    cc = str(aa)+ " " +str(bb)
-    qq.append(cc)
-    print aa, bb
+    continue
+# Counting the events for each genre in the topic => genres tree
+  genre_count_temp = db.event.find({u'topic.genres.name':  genre_name_temp}).count()
+# Print just if the count is bigger than 0
+  if genre_count_temp != 0:
+    counter += genre_count_temp
+    dictionary[' genre_name_temp'] = genre_count_temp
+    genre_name.append( genre_name_temp)
+    count_value.append(genre_count_temp)
+    print  genre_name_temp, genre_count_temp
+
+# Staking the two lists using numpy
+DAT =  np.column_stack((genre_name, count_value))
+# Saving the DAT file in a .txt document using space as a delimiter and also importing 
+#the values as strings(fmt='%s').
 
 
-np.savetxt('genre_count.txt', cc, fmt='%1.4e') 
+np.savetxt('genre_count.txt', DAT,delimiter=" ", fmt='%s') 
 
 # names = dictionary.keys()
 # 
@@ -44,7 +55,19 @@ np.savetxt('genre_count.txt', cc, fmt='%1.4e')
 # 
 # plt.show()
 
+fieldname = "metadata.duration"
+data = count_occurences_field(event,fieldname)
+x = data.keys()
+y = data.values()
+X = np.arange(len(data))
 
+ymax = max(y)*1.2
+
+plt.figure()
+plt.bar(X, y, align="center",width=0.5)
+plt.xticks(X, x)
+plt.ylim([0,ymax])
+plt.show()
  
 print "total", counter  
     
