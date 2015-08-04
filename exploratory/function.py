@@ -18,16 +18,14 @@ def count_occurences_field(collection, field):
     results: dictionary
         {value: counts}
         
-
     """ 
 
-    ##get name of all existing value for field
-    list_values = collection.distinct(field)
+    list_values = collection.distinct(field) #get name of all existing value for field
+    number_of_occurences = [collection.find({field:v}).count() for v in list_values]
+    return dict(zip(list_values, number_of_occurences)) #reshape as dictionary
+    
 
-    ##count number of occurences of each value that field can take
-    number_of_occurences = []
-    for v in list_values:
-        number_of_occurences.append(collection.find( { field: v} ).count())
 
-    return dict(zip(list_values, number_of_occurences))
+
+
     
