@@ -9,8 +9,8 @@ The database is the set of all documents gathered from Netflow, NowTV etc.
 * You have downloaded the mongodb dump (see email 10/07/2015 11:18) and unzip it into /path/dump
 
 ##Command lines
-1/ mongod --dbpath /path/db
-2/ mongorestore --db phoenix /path/dump/phoenix/
+* mongod --dbpath /path/db
+* mongorestore --db phoenix /path/dump/phoenix/
 
 ##Access the database
 mongo
