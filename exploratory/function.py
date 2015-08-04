@@ -16,6 +16,7 @@ def count_occurences_field(collection, field):
     Return:
     ------
     results: dictionary
+        {value: counts}
         
 
     """ 
@@ -28,5 +29,5 @@ def count_occurences_field(collection, field):
     for v in list_values:
         number_of_occurences.append(collection.find( { field: v} ).count())
 
-    return list_values, number_of_occurences
+    return dict(zip(list_values, number_of_occurences))
     
