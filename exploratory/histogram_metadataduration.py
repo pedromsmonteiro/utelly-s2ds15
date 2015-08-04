@@ -1,3 +1,5 @@
+##PURPOSE: plot a histogram of duration of events
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pymongo
@@ -23,6 +25,6 @@ ymax = max(y)*1.2
 plt.figure()
 plt.barh(x, y)
 plt.xlabel("Counts")
-plt.ylabel("Duration [minutes]")
-plt.savefig("figures/histogram_duration.pdf")
+plt.ylabel("metadata.duration [minutes]")
+plt.savefig("figures/histogram_metadata.duration.pdf")
 
