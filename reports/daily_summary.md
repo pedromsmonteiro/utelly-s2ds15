@@ -1,11 +1,11 @@
 #Daily Summary
 ===========
 
-This file sums up our 15min standup (aka scrum) meeting.
-A = Alan
-L = Long
-O = Ornella
-P = Pedro
+This file sums up our 15min standup (aka scrum) meeting. 
+A = Alan 
+L = Long 
+O = Ornella 
+P = Pedro 
 
 
 ##Monday 03/08/15
