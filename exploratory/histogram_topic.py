@@ -12,7 +12,7 @@ event = db.event
 total_number_of_events = event.count()
 
 ##make the histogram
-field_list = [ "topic.metadata.release_date", "topic.source_id", "topic.type"]
+field_list = ["topic.source_id", "topic.type"]
 
 ##work in progress now
 for fieldname in field_list:

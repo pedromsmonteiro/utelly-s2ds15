@@ -1,4 +1,7 @@
 ###PURPOSE: make a series of histogram of events (live, new_episode, new_serie, premiere)
+##doesn't work yet
+
+
 
 import matplotlib.pyplot as plt
 import numpy as np
