@@ -1,7 +1,6 @@
-import matplotlib.pyplot as plt
-import numpy as np
+###PURPOSE: computes the number of documents for all collections in phoenix database
+
 import pymongo
-from function import count_occurences_field
 
 client = pymongo.MongoClient("localhost", 27017) 
 db = client.phoenix
