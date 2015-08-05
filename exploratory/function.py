@@ -50,7 +50,7 @@ def get_allkeys(document):
             for l in item[key]:
                 if isinstance(l, dict):
                     for lkey in l.keys():
-                        lkey_annotated = key + ".[" + lkey + "]"
+                        lkey_annotated = key + "." + lkey + ""
                         if lkey_annotated not in keylist:
                             keylist.append(lkey_annotated)
     return sorted(keylist)
