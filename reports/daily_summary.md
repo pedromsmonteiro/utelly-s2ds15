@@ -9,16 +9,16 @@ P = Pedro
 
 
 ##Monday 03/08/15
-Meeting with Vincent
-Handle all the datasets (mongodb + tweets)
-Installing Mongodb for everyone successfully
+Meeting with Vincent  
+Handle all the datasets (mongodb + tweets)  
+Installing Mongodb for everyone successfully  
 
 ##Tuesday 04/08/15
-Hands on python, pymongo
-Setting up slack, github repository
-figure out how to make simple query in pymongo
-make firsts histograms on events database
-filter low occurences
+Hands on python, pymongo  
+Setting up slack, github repository  
+figure out how to make simple query in pymongo  
+make firsts histograms on events database  
+filter low occurences  
 
 
 
