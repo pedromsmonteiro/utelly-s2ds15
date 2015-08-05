@@ -2,9 +2,7 @@ import numpy as np
 import pymongo
 
 
-client = pymongo.MongoClient("localhost", 27017) 
-db = client.phoenix
-all_collections = db.collection_names()
+
 
 def count_occurences_field(collection, field):
     """Return a dictionary of keys and associated counts
