@@ -1,6 +1,6 @@
 import numpy as np
 import pymongo
-
+import pdb
 
 
 
@@ -21,10 +21,20 @@ def count_occurences_field(collection, field):
         {value: counts}
         
     """ 
-
-    list_values = collection.distinct(field) #get name of all existing value for field
+    try:
+        list_values = collection.distinct(field) #get name of all existing value for field
+    except pymongo.errors.OperationFailure: #if returns too many documents
+        print "operationfailure"
+        return {}
+        
     number_of_occurences = [collection.find({field:v}).count() for v in list_values]
-    return dict(zip(list_values, number_of_occurences)) #reshape as dictionary
+
+    ##if list_values has a dictionary element, then zip throws TypeError, return empty dict
+    if not any(isinstance(item, dict) for item in list_values):
+        return dict(zip(list_values, number_of_occurences)) #reshape as dictionary
+    else:
+        return {}
+
     
 
 
@@ -50,7 +60,23 @@ def get_allkeys(document):
             for l in item[key]:
                 if isinstance(l, dict):
                     for lkey in l.keys():
-                        lkey_annotated = key + ".[" + lkey + "]"
+                        lkey_annotated = key + "." + lkey + ""
                         if lkey_annotated not in keylist:
                             keylist.append(lkey_annotated)
     return sorted(keylist)
+
+
+
+
+def type_to_string(a):
+    """Return any type into a string"""
+
+    if a == None:
+        result = "None".encode('utf-8')
+        
+    try:
+        result=str(a).encode('utf-8')
+    except UnicodeEncodeError:
+        result=a.encode('utf-8')
+        
+    return result.decode('utf-8')
