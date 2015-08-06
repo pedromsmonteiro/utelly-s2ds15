@@ -25,6 +25,7 @@ def count_occurences_field(collection, field):
         list_values = collection.distinct(field) #get name of all existing value for field
     except pymongo.errors.OperationFailure: #if returns too many documents
         print "operationfailure"
+        return {}
         
     number_of_occurences = [collection.find({field:v}).count() for v in list_values]
 
@@ -63,3 +64,19 @@ def get_allkeys(document):
                         if lkey_annotated not in keylist:
                             keylist.append(lkey_annotated)
     return sorted(keylist)
+
+
+
+
+def type_to_string(a):
+    """Return any type into a string"""
+
+    if a == None:
+        result = "None".encode('utf-8')
+        
+    try:
+        result=str(a).encode('utf-8')
+    except UnicodeEncodeError:
+        result=a.encode('utf-8')
+        
+    return result.decode('utf-8')
