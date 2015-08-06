@@ -25,19 +25,3 @@ def call_field(collection,field_name,*args):
 
 
 
-def match_lists(list1,list2):
-    """Check if the event ID matches between list1 and list2
-
-    Parameters:
-    ----------
-    list1, list 2: list of 2 lists
-        output of call_field
-
-    Output:
-    ------
-    result : Boolean
-    """
-
-    result = list1[0]-list2[0]
-    return result
-
