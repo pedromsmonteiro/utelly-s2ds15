@@ -1,6 +1,6 @@
 import numpy as np
 import pymongo
-
+import pdb
 
 
 
@@ -21,10 +21,19 @@ def count_occurences_field(collection, field):
         {value: counts}
         
     """ 
-
-    list_values = collection.distinct(field) #get name of all existing value for field
+    try:
+        list_values = collection.distinct(field) #get name of all existing value for field
+    except pymongo.errors.OperationFailure: #if returns too many documents
+        print "operationfailure"
+        
     number_of_occurences = [collection.find({field:v}).count() for v in list_values]
-    return dict(zip(list_values, number_of_occurences)) #reshape as dictionary
+
+    ##if list_values has a dictionary element, then zip throws TypeError, return empty dict
+    if not any(isinstance(item, dict) for item in list_values):
+        return dict(zip(list_values, number_of_occurences)) #reshape as dictionary
+    else:
+        return {}
+
     
 
 
